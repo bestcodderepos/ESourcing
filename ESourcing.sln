@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sourcing", "Sourcing", "{5D
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E8C112C3-E9B1-439C-ACF8-B5447AC48F55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esourcing.Sourcing", "Esourcing.Sourcing\Esourcing.Sourcing.csproj", "{E668C2BC-E01A-4123-A558-98BADE9D6C5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,18 @@ Global
 		{E8C112C3-E9B1-439C-ACF8-B5447AC48F55}.Release|x64.Build.0 = Release|Any CPU
 		{E8C112C3-E9B1-439C-ACF8-B5447AC48F55}.Release|x86.ActiveCfg = Release|Any CPU
 		{E8C112C3-E9B1-439C-ACF8-B5447AC48F55}.Release|x86.Build.0 = Release|Any CPU
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E}.Debug|x64.Build.0 = Debug|Any CPU
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E}.Debug|x86.Build.0 = Debug|Any CPU
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E}.Release|x64.ActiveCfg = Release|Any CPU
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E}.Release|x64.Build.0 = Release|Any CPU
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E}.Release|x86.ActiveCfg = Release|Any CPU
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +84,7 @@ Global
 		{6E27C5AA-A9CC-45E5-912A-EE43553D2461} = {05434108-6590-4AA3-BE73-C87E935F21D0}
 		{F0B8C0A5-8C79-47D3-81E1-671760AC0195} = {05434108-6590-4AA3-BE73-C87E935F21D0}
 		{5D6C0384-5FE9-4A96-BEBC-EFB0BD0B08EC} = {05434108-6590-4AA3-BE73-C87E935F21D0}
+		{E668C2BC-E01A-4123-A558-98BADE9D6C5E} = {5D6C0384-5FE9-4A96-BEBC-EFB0BD0B08EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDD0556A-8F7D-485D-B006-229892D4E0C0}
