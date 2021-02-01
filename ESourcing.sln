@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sourcing", "Sourcing", "{5D
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E8C112C3-E9B1-439C-ACF8-B5447AC48F55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esourcing.Sourcing", "Esourcing.Sourcing\Esourcing.Sourcing.csproj", "{E668C2BC-E01A-4123-A558-98BADE9D6C5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Esourcing.Sourcing", "Esourcing.Sourcing\Esourcing.Sourcing.csproj", "{E668C2BC-E01A-4123-A558-98BADE9D6C5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

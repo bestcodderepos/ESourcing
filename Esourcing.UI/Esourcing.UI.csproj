@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="5.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="5.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\dist\css\adminlte.css.map" />
+    <None Include="wwwroot\dist\css\adminlte.min.css.map" />
+    <None Include="wwwroot\dist\css\alt\adminlte.components.css.map" />
+    <None Include="wwwroot\dist\css\alt\adminlte.components.min.css.map" />
+    <None Include="wwwroot\dist\css\alt\adminlte.core.css.map" />
+    <None Include="wwwroot\dist\css\alt\adminlte.core.min.css.map" />
+    <None Include="wwwroot\dist\css\alt\adminlte.extra-components.css.map" />
+    <None Include="wwwroot\dist\css\alt\adminlte.extra-components.min.css.map" />
+    <None Include="wwwroot\dist\css\alt\adminlte.pages.css.map" />
+    <None Include="wwwroot\dist\css\alt\adminlte.pages.min.css.map" />
+    <None Include="wwwroot\dist\css\alt\adminlte.plugins.css.map" />
+    <None Include="wwwroot\dist\css\alt\adminlte.plugins.min.css.map" />
+    <None Include="wwwroot\dist\js\adminlte.js" />
+    <None Include="wwwroot\dist\js\adminlte.js.map" />
+    <None Include="wwwroot\dist\js\adminlte.min.js" />
+    <None Include="wwwroot\dist\js\adminlte.min.js.map" />
+    <None Include="wwwroot\dist\js\demo.js" />
+    <None Include="wwwroot\dist\js\pages\dashboard.js" />
+    <None Include="wwwroot\dist\js\pages\dashboard2.js" />
+    <None Include="wwwroot\dist\js\pages\dashboard3.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ESourcing.Infrastructure\ESourcing.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
