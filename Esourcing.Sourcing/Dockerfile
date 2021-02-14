@@ -6,16 +6,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-focal AS build
 WORKDIR /src
-COPY ["ESourcing.Products/ESourcing.Products.csproj", "ESourcing.Products/"]
-RUN dotnet restore "ESourcing.Products/ESourcing.Products.csproj"
+COPY ["Esourcing.Sourcing/Esourcing.Sourcing.csproj", "Esourcing.Sourcing/"]
+RUN dotnet restore "Esourcing.Sourcing/Esourcing.Sourcing.csproj"
 COPY . .
-WORKDIR "/src/ESourcing.Products"
-RUN dotnet build "ESourcing.Products.csproj" -c Release -o /app/build
+WORKDIR "/src/Esourcing.Sourcing"
+RUN dotnet build "Esourcing.Sourcing.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ESourcing.Products.csproj" -c Release -o /app/publish
+RUN dotnet publish "Esourcing.Sourcing.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ESourcing.Products.dll"]
+ENTRYPOINT ["dotnet", "Esourcing.Sourcing.dll"]
