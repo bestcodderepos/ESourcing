@@ -3,9 +3,9 @@ using Ordering.Domain.Entities;
 
 namespace Ordering.Infrastructure.Data
 {
-    public class OrderContex : DbContext
+    public class OrderContext : DbContext
     {
-        public OrderContex(DbContextOptions<OrderContex> options) : base(options)
+        public OrderContext(DbContextOptions<OrderContext> options) : base(options)
         {
 
         }
