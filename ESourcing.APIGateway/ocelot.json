@@ -2,14 +2,14 @@
   "Routes": [
     //Product API
     {
+      "DownstreamPathTemplate": "/api/v1/Product",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "esourcingproducts",
           "Port": "80"
         }
       ],
-      "DownstreamPathTemplate": "/api/v1/Product",
-      "DownstreamScheme": "http",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
       "UpstreamPathTemplate": "/Product"
     },
