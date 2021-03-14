@@ -7,6 +7,9 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
 
+  sourcingsqldb:
+    image: mcr.microsoft.com/mssql/server
+
   esourcing.products:
     image: ${DOCKER_REGISTRY-}esourcingproducts
     build:
@@ -18,4 +21,16 @@ services:
     build:
       context: .
       dockerfile: Esourcing.Sourcing/Dockerfile
+
+  esourcing.order:
+    image: ${DOCKER_REGISTRY-}esourcingorder
+    build:
+      context: .
+      dockerfile: ESourcing.Order/Dockerfile
+
+  esourcing.apigateway:
+    image: ${DOCKER_REGISTRY-}esourcingapigateway
+    build:
+      context: .
+      dockerfile: ESourcing.APIGateway/Dockerfile
 
