@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Ordering.Application.Commands.OrderCreate
 {
-    public class OrderCreateCommand : IRequest<OrderReponse>
+    public class OrderCreateCommand : IRequest<OrderResponse>
     {
         public string AuctionId { get; set; }
         public string SellerUserName { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ordering.Application.Responses
 {
-    public class OrderReponse
+    public class OrderResponse
     {
         public string Id { get; set; }
         public string AuctionId { get; set; }

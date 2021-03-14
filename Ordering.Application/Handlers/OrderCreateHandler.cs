@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Ordering.Application.Handlers
 {
-    public class OrderCreateHandler : IRequestHandler<OrderCreateCommand, OrderReponse>
+    public class OrderCreateHandler : IRequestHandler<OrderCreateCommand, OrderResponse>
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ namespace Ordering.Application.Handlers
             _mapper = mapper;
         }
 
-        public async Task<OrderReponse> Handle(OrderCreateCommand request, CancellationToken cancellationToken)
+        public async Task<OrderResponse> Handle(OrderCreateCommand request, CancellationToken cancellationToken)
         {
             var orderEntity = _mapper.Map<Order>(request);
             if (orderEntity == null)
@@ -34,7 +34,7 @@ namespace Ordering.Application.Handlers
 
             var order = await _orderRepository.AddAsync(orderEntity);
 
-            var orderResponse = _mapper.Map<OrderReponse>(order);
+            var orderResponse = _mapper.Map<OrderResponse>(order);
 
             return orderResponse;
         }
