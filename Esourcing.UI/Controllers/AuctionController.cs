@@ -1,6 +1,6 @@
-﻿using Esourcing.UI.ViewModel;
+﻿using Esourcing.UI.Clients;
+using Esourcing.UI.ViewModel;
 using ESourcing.Core.Repositories;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,10 +10,12 @@ namespace Esourcing.UI.Controllers
     public class AuctionController : Controller
     {
         private readonly IUserRepository _userRepository;
+        private readonly ProductClient _productClient;
 
-        public AuctionController(IUserRepository userRepository)
+        public AuctionController(IUserRepository userRepository, ProductClient productClient)
         {
             _userRepository = userRepository;
+            _productClient = productClient;
         }
 
 
@@ -26,6 +28,11 @@ namespace Esourcing.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            //TODO:Product GetAll
+            var productList = await _productClient.GetProducts();
+            if (productList.IsSuccess)
+                ViewBag.ProductList = productList.Data;
+
             var userList = await _userRepository.GetAllAsync();
             ViewBag.UserList = userList;
 
