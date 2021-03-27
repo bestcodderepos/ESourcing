@@ -16,6 +16,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using RabbitMQ.Client;
 using AutoMapper;
+using Esourcing.Sourcing.Hubs;
 
 namespace Esourcing.Sourcing
 {
@@ -88,6 +89,8 @@ namespace Esourcing.Sourcing
             services.AddSingleton<EventBusRabbitMQProducer>();
 
             #endregion
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -104,6 +107,7 @@ namespace Esourcing.Sourcing
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<AuctionHub>("/auctionhub");
                 endpoints.MapControllers();
             });
 
