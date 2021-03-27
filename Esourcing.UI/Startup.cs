@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Esourcing.UI
 {
@@ -27,6 +28,7 @@ namespace Esourcing.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<WebAppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
             services.AddIdentity<AppUser, IdentityRole>(opt =>
@@ -41,6 +43,10 @@ namespace Esourcing.UI
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddMvc();
             services.AddRazorPages();
+            services.AddSession(opt =>
+            {
+                opt.IdleTimeout = TimeSpan.FromMinutes(20);
+            });
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
@@ -65,11 +71,13 @@ namespace Esourcing.UI
 
             services.AddHttpClient<ProductClient>();
             services.AddHttpClient<AuctionClient>();
+            services.AddHttpClient<BidClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSession();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

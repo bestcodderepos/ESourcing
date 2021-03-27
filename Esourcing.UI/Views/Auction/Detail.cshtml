@@ -13,7 +13,7 @@
             <div class="card-header">
                 <h3 class="card-title">Quick Auction</h3>
             </div>
-            <form method="post">
+          
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputPrice">Price</label>
@@ -23,13 +23,12 @@
                 <div class="card-footer">
                     <button type="submit" id="sendButton" class="btn btn-primary">Submit</button>
                 </div>
-            </form>
         </div>
     </div>
 
     <div class="col-md-6">
         <div class="card-header" style="background-color:darkgray">
-            <h3 class="card-title">Active Auction Detail</h3>
+            <h3 class="card-title">Active RFQ Detail</h3>
         </div>
         @Html.HiddenFor(x => x.AuctionId)
         @Html.HiddenFor(x => x.ProductId)
@@ -38,22 +37,28 @@
             <table id="exampleAuction" class="table table-bordered table-hover">
                 <thead>
                     <tr style="background-color:darkgray">
-                        <th>Auction User Name</th>
+                        <th>RFQ User Name</th>
                         <th>Price</th>
-                        <th>Quantity</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Hasan Denli</td>
-                        <td>10 $</td>
-                        <td>2</td>
-                    </tr>
+                <tbody class="bidLine">
+                    @if (Model.Bids != null)
+                    {
+                        @foreach (var bid in Model.Bids)
+                        {
+                            <tr>
+                                <td>@bid.SellerUserName</td>
+                                <td>@bid.Price</td>
+                            </tr>
+                        }
+                    }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+<button type="submit" id="finishButton" class="btn btn-primary">Finish RFQ</button>
 
 <script src="~/lib/microsoft-signalr/signalr.js"></script>
-<script src="~/js/Views/RFQ/detail.js"></script>
+@*<script src="~/js/Views/RFQ/detail.js"></script>*@
+<script src="~/detail.js"></script>

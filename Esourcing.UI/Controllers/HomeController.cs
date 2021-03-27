@@ -1,6 +1,7 @@
 ﻿using ESourcing.Core.Entities;
 using ESourcing.UI.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -43,8 +44,11 @@ namespace Esourcing.UI.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user, loginModel.Password, false, false);
 
                     if (result.Succeeded)
+                    {
+                        HttpContext.Session.SetString("IsAdmin", user.IsAdmin.ToString());
                         //return RedirectToAction("Index");
                         return LocalRedirect(returnUrl);
+                    }
                     else
                         ModelState.AddModelError("", "Email address is not valid or password");
                 }

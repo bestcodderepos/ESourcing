@@ -90,7 +90,7 @@ namespace Esourcing.Sourcing.Controllers
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
-        public async Task<ActionResult> CompleteAuction(string id)
+        public async Task<ActionResult> CompleteAuction([FromBody] string id)
         {
             Auction auction = await _auctionRepository.GetAuction(id);
             if (auction == null)

@@ -48,22 +48,26 @@ namespace Esourcing.Sourcing
             #endregion
 
             #region Swagger Dependencies
-            services.AddSwaggerGen(s => {
-                s.SwaggerDoc("v1", 
-                    new OpenApiInfo 
-                    { 
-                        Title = "ESourcing.Sourcing" , 
-                        Version = "v1" }
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "ESourcing.Sourcing",
+                        Version = "v1"
+                    }
                     );
             });
             #endregion
 
             #region EventBus
 
-            services.AddSingleton<IRabbitMQPersistentConnection>(sp => {
+            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
+            {
                 var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
 
-                var factory = new ConnectionFactory() { 
+                var factory = new ConnectionFactory()
+                {
                     HostName = Configuration["EventBus:HostName"]
                 };
 
@@ -90,6 +94,15 @@ namespace Esourcing.Sourcing
 
             #endregion
 
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials()
+                        .WithOrigins("https://localhost:44398");
+            }));
+
             services.AddSignalR();
         }
 
@@ -104,6 +117,7 @@ namespace Esourcing.Sourcing
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
