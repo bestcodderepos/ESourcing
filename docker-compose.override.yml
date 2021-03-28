@@ -19,10 +19,10 @@ services:
   sourcingsqldb:
     container_name: sourcingsqldb
     ports:
-        - "1433:1433"
+      - "1433:1433"
     environment:
-        SA_PASSWORD: "Odb12345678"
-        ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Odb12345678"
+      ACCEPT_EULA: "Y"
 
   esourcing.products:
     container_name: esourcingproducts
@@ -53,20 +53,19 @@ services:
       - "8001:80"
 
   esourcing.order:
-     container_name: esourcingorder
-     restart: on-failure
-     environment:
-         - ASPNETCORE_ENVIRONMENT=Development
-         - "ConnectionStrings:OrderConnection=Server=sourcingsqldb;Database=OrderDb;User Id=sa;Password=Odb12345678"
-         - "EventBus:HostName=rabbitmq"
-     depends_on:
-         - sourcingsqldb
-         - rabbitmq
-     volumes:
-         - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
-         - ${HOME}/.aspnet/https:/root/.aspnet/https/
-     ports:
-         - "8002:80"
+    container_name: esourcingorder
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:OrderConnection=Server=sourcingsqldb;Database=OrderDb;User Id=sa;Password=Odb12345678"
+      - "EventBus:HostName=rabbitmq"
+    depends_on:
+      - sourcingsqldb
+      - rabbitmq
+    volumes:
+      - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+      - ${HOME}/.aspnet/https:/root/.aspnet/https/
+    ports:
+      - "8002:80"
 
   esourcing.apigateway:
     container_name: esourcingapigateway
@@ -81,3 +80,5 @@ services:
     volumes:
       - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
       - ${HOME}/.aspnet/https:/root/.aspnet/https/
+
+
