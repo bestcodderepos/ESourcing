@@ -9,6 +9,10 @@
     {
       "library": "jquery-validation-unobtrusive@3.2.11",
       "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+    },
+    {
+      "library": "microsoft-signalr@5.0.4",
+      "destination": "wwwroot/lib/microsoft-signalr/"
     }
   ]
 }

@@ -16,6 +16,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using RabbitMQ.Client;
 using AutoMapper;
+using Esourcing.Sourcing.Hubs;
 
 namespace Esourcing.Sourcing
 {
@@ -47,22 +48,26 @@ namespace Esourcing.Sourcing
             #endregion
 
             #region Swagger Dependencies
-            services.AddSwaggerGen(s => {
-                s.SwaggerDoc("v1", 
-                    new OpenApiInfo 
-                    { 
-                        Title = "ESourcing.Sourcing" , 
-                        Version = "v1" }
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "ESourcing.Sourcing",
+                        Version = "v1"
+                    }
                     );
             });
             #endregion
 
             #region EventBus
 
-            services.AddSingleton<IRabbitMQPersistentConnection>(sp => {
+            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
+            {
                 var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
 
-                var factory = new ConnectionFactory() { 
+                var factory = new ConnectionFactory()
+                {
                     HostName = Configuration["EventBus:HostName"]
                 };
 
@@ -88,6 +93,17 @@ namespace Esourcing.Sourcing
             services.AddSingleton<EventBusRabbitMQProducer>();
 
             #endregion
+
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials()
+                        .WithOrigins("https://localhost:44398");
+            }));
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -101,9 +117,11 @@ namespace Esourcing.Sourcing
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<AuctionHub>("/auctionhub");
                 endpoints.MapControllers();
             });
 
