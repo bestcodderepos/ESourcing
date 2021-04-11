@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ESourcing.Core.Common
+﻿namespace ESourcing.Core.Common
 {
     public static class CommonInfo
     {

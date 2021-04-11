@@ -35,7 +35,6 @@ namespace Esourcing.UI.Clients
             return new Result<List<AuctionViewModel>>(false, ResultConstant.RecordNotFound);
         }
 
-
         public async Task<Result<AuctionViewModel>> CreateAuction(AuctionViewModel model)
         {
             var dataAsString = JsonConvert.SerializeObject(model);
