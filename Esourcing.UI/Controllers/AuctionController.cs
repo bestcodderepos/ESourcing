@@ -51,7 +51,7 @@ namespace Esourcing.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(AuctionViewModel model)
         {
-            model.Status = 1;
+            model.Status = 0;
             model.CreatedAt = DateTime.Now;
             model.IncludedSellers.Add(model.SellerId);
             var createAuction = await _auctionClient.CreateAuction(model);

@@ -1,5 +1,5 @@
 ﻿
-var connection = new signalR.HubConnectionBuilder().withUrl("http://localhost:57533/auctionhub").build();
+var connection = new signalR.HubConnectionBuilder().withUrl("http://localhost:8001/auctionhub").build();
 var auctionId = document.getElementById("AuctionId").value;
 
 //Disable send button until connection is established
@@ -94,6 +94,7 @@ function SendCompleteBid(model) {
         success: function (response) {
             if (response) {
                 console.log("ıslemınız basarıyla sonuclandı");
+                location.href = "https://localhost:44398/Auction/Index";
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {

@@ -17,12 +17,12 @@ namespace Esourcing.UI.Clients
         public BidClient(HttpClient client)
         {
             _client = client;
-            _client.BaseAddress = new Uri(CommonInfo.LocalAuctionBaseAddress);
+            _client.BaseAddress = new Uri(CommonInfo.BaseAddress);
         }
 
         public async Task<Result<List<BidViewModel>>> GelAllBidsByAuctionId(string id)
         {
-            var response = await _client.GetAsync("/api/v1/Bid/GetAllBidsByAuctionId?id=" + id);
+            var response = await _client.GetAsync("/Bid/GetAllBidsByAuctionId?id=" + id);
             if (response.IsSuccessStatusCode)
             {
                 var responseData = await response.Content.ReadAsStringAsync();
@@ -39,7 +39,7 @@ namespace Esourcing.UI.Clients
             var dataAsString = JsonConvert.SerializeObject(model);
             var content = new StringContent(dataAsString);
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-            var response = await _client.PostAsync("/api/v1/Bid", content);
+            var response = await _client.PostAsync("/Bid", content);
             if (response.IsSuccessStatusCode)
             {
                 var responseData = await response.Content.ReadAsStringAsync();
